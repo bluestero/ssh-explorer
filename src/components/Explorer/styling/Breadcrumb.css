@@ -1,0 +1,48 @@
+#breadcrumb {
+    gap: 5px;
+    display: grid;
+    /* padding: 10px; */
+    padding-top: 5px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid white;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 0.01fr));
+}
+
+#breadcrumb span {
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-align: center;
+    align-self: center;
+}
+
+#breadcrumb span.clickable {
+    text-align: center;
+    cursor: pointer;
+    transition-duration: .15s;
+}
+
+#breadcrumb span.clickable:hover {
+    color: #744545;
+}
+
+#breadcrumb span.clickable:hover::before {
+    content: attr(title); /* Show the title attribute as the tooltip content */
+    position: absolute;
+    background-color: #000;
+    color: #fff;
+    padding: 5px;
+    border-radius: 4px;
+    z-index: 1;
+    white-space: nowrap;
+    top: 100%; /* Position it below the element */
+    left: 50%; /* Center it horizontally */
+    transform: translateX(-50%); /* Center it horizontally */
+    opacity: 0; /* Initially hide it */
+    transition: opacity 0.2s ease-in-out;
+}
+
+#breadcrumb span.clickable:hover::before {
+    opacity: 1; /* Show the tooltip on hover */
+}
